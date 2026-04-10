@@ -1,73 +1,39 @@
-# React + TypeScript + Vite
+# juana-pwd-ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React/Vite para la UI progresiva de Juana. En desarrollo local puede trabajar con auth mock o contra el BFF real de `gateway-server`.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `npm run dev`
+- `npm run typecheck`
+- `npm run test:run`
+- `npm run test:e2e`
+- `npm run test:e2e:headed`
 
-## React Compiler
+## Variables utiles
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_DEV_AUTH_ENABLED=false
+E2E_KEYCLOAK_USERNAME=kathy
+E2E_KEYCLOAK_PASSWORD=ChangeMeImmediately!
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## E2E de autenticacion
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+El smoke E2E usa Playwright y ejecuta el flujo real:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. abre `/login`
+2. redirige a Keycloak por `/auth/login`
+3. completa credenciales
+4. vuelve a la UI con `JUANA_SESSION`
+5. valida bootstrap de sesion
+6. ejecuta logout con `X-CSRF-Token`
+
+Ejemplo:
+
+```bash
+$env:VITE_DEV_AUTH_ENABLED='false'
+$env:E2E_KEYCLOAK_USERNAME='kathy'
+$env:E2E_KEYCLOAK_PASSWORD='ChangeMeImmediately!'
+npm run test:e2e
 ```

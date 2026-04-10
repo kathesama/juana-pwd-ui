@@ -128,6 +128,7 @@ The UI does not manage sensitive credentials directly. It relies on the Gateway 
 - **Unit Tests:** Business logic in hooks and utilities (Vitest).
 - **Component Tests:** Interaction and rendering (React Testing Library).
 - **Integration Tests:** Feature-level flows using MSW to mock API responses.
+- **E2E Tests:** Playwright smoke coverage for real BFF login, session bootstrap, and logout against local Keycloak and Gateway.
 
 ### 6.2 PWA Capabilities
 
