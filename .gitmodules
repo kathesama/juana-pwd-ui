@@ -1,0 +1,3 @@
+[submodule ".sdd-kit"]
+	path = .sdd-kit
+	url = git@github.com:kathesama/kathy-sdd-kit.git
