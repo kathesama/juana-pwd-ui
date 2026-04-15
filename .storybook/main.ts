@@ -1,5 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const storybookDir = path.dirname(fileURLToPath(import.meta.url))
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
@@ -17,16 +20,16 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '../src'),
-          '@app': path.resolve(__dirname, '../src/app'),
-          '@common': path.resolve(__dirname, '../src/common'),
-          '@features': path.resolve(__dirname, '../src/features'),
-          '@router': path.resolve(__dirname, '../src/router'),
-          '@store': path.resolve(__dirname, '../src/store'),
-          '@styles': path.resolve(__dirname, '../src/styles'),
-          '@mocks': path.resolve(__dirname, '../src/mocks'),
-          '@assets': path.resolve(__dirname, '../src/assets'),
-          '@i18n': path.resolve(__dirname, '../src/i18n'),
+          '@': path.resolve(storybookDir, '../src'),
+          '@app': path.resolve(storybookDir, '../src/app'),
+          '@common': path.resolve(storybookDir, '../src/common'),
+          '@features': path.resolve(storybookDir, '../src/features'),
+          '@router': path.resolve(storybookDir, '../src/router'),
+          '@store': path.resolve(storybookDir, '../src/store'),
+          '@styles': path.resolve(storybookDir, '../src/styles'),
+          '@mocks': path.resolve(storybookDir, '../src/mocks'),
+          '@assets': path.resolve(storybookDir, '../src/assets'),
+          '@i18n': path.resolve(storybookDir, '../src/i18n'),
         },
       },
     })

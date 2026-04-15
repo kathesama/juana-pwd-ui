@@ -23,13 +23,13 @@ const sampleMessages = [
 
 export const ChatPage = () => (
   <div className="grid min-h-full gap-4 p-4 xl:grid-cols-[minmax(0,1fr)_320px]">
-    <section className="flex min-h-[70vh] flex-col overflow-hidden rounded-[1.75rem] border border-juana-border bg-black/10">
-      <header className="flex items-center justify-between gap-4 border-b border-juana-border px-5 py-4">
+    <section className="juana-panel flex min-h-[70vh] flex-col overflow-hidden">
+      <header className="flex items-center justify-between gap-4 border-b border-juana-surface-600 px-5 py-4">
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-juana-gold">Conversation</p>
-          <h2 className="mt-2 text-2xl font-semibold text-juana-text-primary">Chat workspace</h2>
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-juana-gold-400">Conversation</p>
+          <h2 className="mt-2 text-2xl font-semibold text-white">Chat workspace</h2>
         </div>
-        <div className="rounded-full border border-juana-purple-light/40 bg-juana-purple/10 px-3 py-1 text-xs text-juana-purple-light">
+        <div className="rounded-full border border-juana-purple-300/40 bg-juana-purple-500/10 px-3 py-1 text-xs text-juana-purple-300">
           Mock session
         </div>
       </header>
@@ -42,15 +42,15 @@ export const ChatPage = () => (
             <article
               key={message.id}
               className={[
-                'max-w-3xl rounded-3xl border px-5 py-4',
+                'max-w-3xl rounded-3xl border px-5 py-4 backdrop-blur-md',
                 isAssistant
-                  ? 'border-juana-border bg-juana-surface/70 text-juana-text-primary'
-                  : 'ml-auto border-juana-purple-light/30 bg-juana-purple/15 text-juana-text-primary',
+                  ? 'border-white/10 bg-juana-surface-800/70 text-white'
+                  : 'ml-auto border-juana-purple-300/30 bg-juana-purple-500/15 text-white',
               ].join(' ')}
             >
               <div className="mb-3 flex items-center gap-2">
-                {isAssistant ? <Bot className="h-4 w-4 text-juana-gold" /> : <CornerDownRight className="h-4 w-4 text-juana-purple-light" />}
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-juana-text-muted">
+                {isAssistant ? <Bot className="h-4 w-4 text-juana-gold-400" /> : <CornerDownRight className="h-4 w-4 text-juana-purple-300" />}
+                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">
                   {message.title}
                 </span>
               </div>
@@ -60,10 +60,10 @@ export const ChatPage = () => (
         })}
       </div>
 
-      <footer className="border-t border-juana-border px-4 py-4">
-        <div className="rounded-3xl border border-juana-border bg-juana-surface/80 px-4 py-4">
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-juana-text-muted">Composer placeholder</p>
-          <p className="mt-2 text-sm text-juana-text-muted">
+      <footer className="border-t border-juana-surface-600 px-4 py-4">
+        <div className="juana-panel px-4 py-4">
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">Composer placeholder</p>
+          <p className="mt-2 text-sm text-zinc-400">
             The actual streaming composer can be mounted here when the chat feature lands.
           </p>
         </div>
@@ -71,8 +71,8 @@ export const ChatPage = () => (
     </section>
 
     <aside className="grid gap-4">
-      <section className="rounded-[1.75rem] border border-juana-border bg-black/10 p-5">
-        <div className="flex items-center gap-2 text-juana-gold">
+      <section className="juana-panel p-5">
+        <div className="flex items-center gap-2 text-juana-gold-400">
           <Sparkles className="h-4 w-4" />
           <p className="font-mono text-[11px] uppercase tracking-[0.24em]">Status rail</p>
         </div>
@@ -82,26 +82,26 @@ export const ChatPage = () => (
             ['Mocks', 'MSW resolves auth session and starred message endpoints.'],
             ['Tooling', 'Typecheck, lint, tests and build now pass in the new repo.'],
           ].map(([title, description]) => (
-            <article key={title} className="rounded-2xl border border-juana-border bg-juana-surface/70 p-4">
-              <h3 className="text-sm font-semibold text-juana-text-primary">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-juana-text-muted">{description}</p>
+            <article key={title} className="juana-panel rounded-2xl p-4">
+              <h3 className="text-sm font-semibold text-white">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">{description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="rounded-[1.75rem] border border-juana-border bg-black/10 p-5">
+      <section className="juana-panel p-5">
         <div className="flex items-center justify-between">
-          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-juana-text-muted">Signals</p>
-          <Clock3 className="h-4 w-4 text-juana-purple-light" />
+          <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">Signals</p>
+          <Clock3 className="h-4 w-4 text-juana-purple-300" />
         </div>
         <div className="mt-4 space-y-3">
-          <div className="rounded-2xl border border-juana-border bg-juana-surface/70 p-4">
+          <div className="juana-panel rounded-2xl p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-juana-text-primary">Recent milestone</span>
-              <Star className="h-4 w-4 text-juana-gold" />
+              <span className="text-sm font-medium text-white">Recent milestone</span>
+              <Star className="h-4 w-4 text-juana-gold-400" />
             </div>
-            <p className="mt-2 text-sm leading-6 text-juana-text-muted">
+            <p className="mt-2 text-sm leading-6 text-zinc-400">
               New repo created and stabilized without inheriting the config drift from the previous one.
             </p>
           </div>

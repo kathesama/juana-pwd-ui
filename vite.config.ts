@@ -4,11 +4,14 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command }) => {
+  const isStorybook = process.env.STORYBOOK === 'true' || process.env.npm_lifecycle_event === 'build-storybook'
+
+  return ({
   plugins: [
     react(),
     VitePWA({
-      disable: command === 'serve',
+      disable: command === 'serve' || isStorybook,
       registerType: 'autoUpdate',
       devOptions: {
         enabled: false,
@@ -101,4 +104,4 @@ export default defineConfig(({ command }) => ({
       },
     },
   },
-}))
+})})
