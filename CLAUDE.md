@@ -131,3 +131,8 @@ Effects: `backdrop-blur`, radial gradients in `globals.css`.
 - Backend repo: [JuanaIA](https://github.com/kathesama/JuanaIA)
 - ADR-051: Juana UI PWA architecture decision
 - gateway-server: :8072 (sole backend entry point)
+
+## SDD Kit
+
+This project uses kathy-sdd-kit.
+@.sdd-kit/CLAUDE.md
